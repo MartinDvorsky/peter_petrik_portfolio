@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Effect</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .sample-header {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            background-image: url("logo.webp"); /* Replace with your image */
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .sample-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: MidnightBlue;
+            opacity: 0.3;
+        }
+
+        .sample-header-section {
+            position: relative;
+            padding: 15% 0 10%;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            font-family: "Montserrat", sans-serif;
+        }
+
+        h1 {
+            font-weight: 500;
+        }
+
+        h2 {
+            font-weight: 400;
+        }
+
+        .sample-section-wrap {
+            position: relative;
+            background-color: white;
+        }
+
+        .sample-section {
+            position: relative;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 40px;
+        }
+
+
+        #services {
+            display: flex;
+            justify-content: center; /* Centrovanie sekcií horizontálne */
+            padding: 50px 0;
+            background-color: #ffffff; /* Biele pozadie */
+        }
+
+        .service {
+            text-align: center;
+            max-width: 300px;
+            margin: 0 10px; /* Medzera medzi sekciami */
+        }
+
+
+
+        .service img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .service h3 {
+            font-size: 1.5em;
+            margin: 20px 0 10px;
+        }
+
+        .service p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .learn-more {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .learn-more:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            #services {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service {
+                margin-bottom: 30px;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-100%);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05) translateY(10%);
+            }
+            70% {
+                transform: scale(0.9) translateY(-5%);
+            }
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .service {
+            /* existujúce štýly */
+            animation: bounceIn 1s ease;
+        }
+
+        footer {
+            background-color: #ffffff; /* Biele pozadie */
+
+            color: #333;
+            font-family: "Montserrat", sans-serif;
+            border-top: 1px solid #e0e0e0; /* Jemná horná hranica pre oddelenie */
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 10px auto;
+            padding-left: 20%;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 1px;
+        }
+
+        .footer-section h3 {
+            font-weight: 200;
+            margin-bottom: 15px;
+            color: #487e6d; /* Modrá farba pre nadpisy */
+            font-size: 14px;
+        }
+
+        .footer-section p {
+            margin: 1px 0;
+            line-height: 1.4;
+            font-size: 11px;
+
+        }
+
+        .footer-section a {
+            color: #4d614b;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1px;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 1px;
+            font-size: 0.7em;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                padding-left: 0%;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+        }
+
+        .email-button {
+            background-color: #007BFF; /* Modré pozadie */
+            color: white; /* Biela farba textu */
+            border: none; /* Bez okraja */
+            padding: 10px 20px; /* Vnútorné odsadenie */
+            font-size: 16px; /* Veľkosť písma */
+            border-radius: 5px; /* Zaoblené rohy */
+            cursor: pointer; /* Ukazovateľ ruky pri prechode myšou */
+            text-decoration: none; /* Bez podčiarknutia */
+            display: inline-block; /* Umožňuje nastaviť vnútorné odsadenie a veľkosť */
+        }
+
+        .email-button:hover {
+            background-color: #0056b3; /* Tmavšia modrá pri prechode myšou */
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="sample-header">
+    <div class="sample-header-section">
+        <h1>GEODET PRESOV</h1>
+        <h2>Peter Petrik</h2>
+    </div>
+</div>
+
+<div class="sample-section-wrap">
+    <div class="sample-section">
+        <p>Kvalifikovaný odborník s dlhoročnými skúsenosťami v oblasti geodézie, pripravení poskytnúť vám komplexné služby na celom území Slovenska.</p>
+        <section id="services">
+            <div class="service">
+                <img src="services1.webp" alt="Geometrické plány">
+                <h3>Geometrické plány</h3>
+                <p>Porealizané zameranie stavieb</p>
+                <p>Zameranie rozostavaných stavieb</p>
+                <p>Na zriadenie vecného bremena</p>
+                <p>Majetkoprávne vysporiadanie pozemkov</p>
+                <p>Oddelenie, rozdelenie pozemkov</p>
+
+            </div>
+            <div class="service">
+                <img src="services1.webp" alt="Ďalšie služby">
+                <h3>Ďalšie služby</h3>
+                <p>Pred/Porealizaané polohopisné zameranie</p>
+                <p>Poradenstvo v katastri nehnutel'nosti</p>
+                <p>Zameranie pozlnch a priených profilov</p>
+                <p>Zameranie podzemných a nadzemných vedení</p>
+                <p>Vytycenie stavebného objektu a staveniska</p>
+            </div>
+        </section>
+        <p>Naším cieľom je poskytovať kvalitné a profesionálne služby, ktoré naplnia vaše očakávania. Neváhajte nás kontaktovať pre nezáväznú konzultáciu alebo vypracovanie cenovej ponuky.</p>
+        <a href="mailto:peterpetrik@geodetvranov.sk">
+            <button class="email-button">Kontaktujte nás</button>
+        </a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Kontakt</h3>
+            <p>Vranov nad Topľou</p>
+            <p>Námestie Slobody 5, Budova AOC 093 01</p>
+            <p>0908 137 409</p>
+            <p><a href="mailto:peterpetrik@geodetvranov.sk">peterpetrik@geodetvranov.sk</a></p>
+        </div>
+        <div class="footer-section">
+            <h3>Fakturačné údaje</h3>
+            <p>Peter Petrík - Geodetické práce</p>
+            <p>Davidov č. 252 093 03</p>
+            <p>IČO: 44 199 236</p>
+            <p>DIČ: 1080005091</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Martin Dvorský. Všetky práva vyhradené.</p>
+    </div>
+</footer>
+
+
+<script>
+    function parallaxHeight() {
+        var scrollTop = window.pageYOffset;
+        var header = document.querySelector(".sample-header");
+        var section = document.querySelector(".sample-section");
+        var headerHeight = document.querySelector(".sample-header-section").offsetHeight;
+
+        section.style.marginTop = headerHeight + "px";
+        header.style.height = Math.max(headerHeight - scrollTop, 0) + "px";
+    }
+
+    parallaxHeight();
+
+    window.addEventListener("scroll", parallaxHeight);
+    window.addEventListener("resize", parallaxHeight);
+</script>
+</body>
+</html>
